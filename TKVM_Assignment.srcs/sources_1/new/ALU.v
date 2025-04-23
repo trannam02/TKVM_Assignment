@@ -48,6 +48,7 @@ always @(*) begin
             end else begin
                 is_zero = 1'b0;
             end
+            result = inA;
         end
         ADD: begin
             result = inA + inB;
