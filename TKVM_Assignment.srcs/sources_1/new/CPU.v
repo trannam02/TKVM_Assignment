@@ -21,8 +21,12 @@
 
 
 module CPU(
-input wire clk,
-input wire reset
+    input wire clk,
+    input wire reset,
+    output wire [4:0] pc_debug,        // Program Counter (for debug/output)
+    output wire [7:0] ac_debug,        // Accumulator
+    output wire [7:0] ir_debug,        // Instruction Register
+    output wire halt_flag              // HALT signal
 );
 
 wire [4:0] pc_out, mem_addr, jump_to_addr;
@@ -32,6 +36,13 @@ wire sel, rd, ld_ir, inc_pc, ld_ac, ld_pc, wr, wr_data_e, halt;
 
 wire is_zero;
 wire clock;
+
+// Some output
+assign pc_debug = pc_out;
+assign ac_debug = ac_out;
+assign ir_debug = ir_out;
+assign halt_flag = halt;
+//=============
 
 assign clock = (halt == 1) ? 1'b0 : clk;
 

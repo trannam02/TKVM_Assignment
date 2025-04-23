@@ -72,7 +72,7 @@ always @(*) begin
         end
     endcase
 
-    is_zero <= (inA == 8'b00000000) ? 1'b1 : 1'b0;
+    is_zero = (inA == 8'b00000000) ? 1'b1 : 1'b0;
 end
 
 endmodule
